@@ -1,0 +1,16 @@
+#drumkit {
+    display: flex;
+    width: 100vw;
+}
+
+.drum{
+    height: 80px;
+    width: 80px;
+    background: #000;
+    margin-left: 10px;
+}
+
+audio {
+    height: 80px;
+    width: 80px;
+}
