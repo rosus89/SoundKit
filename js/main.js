@@ -38,15 +38,24 @@ let view = {
         drums: () => {
             for (let drum of model.drums) {
                 let item = view.create.divClassId("drum",drum.id);
+                item.innerText = drum.key;
                 item.addEventListener("click", drum.play);
+                item.addEventListener(drum.key, drum.play);
                 drumkit.appendChild(item);
                 
             }
         }
     },
+
     event:{
         global: () => document.body.addEventListener("keypress",(e)=>{
-            console.log(e)
+            let event = new CustomEvent(e.key,{
+                bubbles: true
+            })
+            let buttons = document.querySelectorAll(".drum");
+            for (let button of buttons){
+                button.dispatchEvent(event)
+            }
         })
     },
     create: {
@@ -74,6 +83,7 @@ let controller = {
                         sample = new Audio(sample.src);
                         sample.play()
                     }
+
             }))
             }
         }
@@ -84,5 +94,4 @@ let controller = {
 
 controller.init();
 
-console.log(model.drums)
 // })();
