@@ -1,17 +1,20 @@
 #drumkit {
     display: flex;
-    width: 100vw;
+    width: 600px;
+    gap: 10px;
 }
 
 .drum{
-    height: 80px;
-    width: 80px;
     background: #000;
+    padding: 1rem 2rem;
     margin-left: 10px;
     color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
-audio {
-    height: 80px;
-    width: 80px;
+.instrument {
+    margin:10px 0 0 0;
+    padding: 0;
+    color: rgb(50, 211, 17);
 }

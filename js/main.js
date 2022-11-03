@@ -42,6 +42,8 @@ let view = {
                 item.addEventListener("click", drum.play);
                 item.addEventListener(drum.key, drum.play);
                 drumkit.appendChild(item);
+                item.appendChild(view.create.pClass("instrument", drum.id))
+
                 
             }
         }
@@ -59,7 +61,8 @@ let view = {
         })
     },
     create: {
-        divClassId: (className, id) => Object.assign(document.createElement('div'),{className:className, id:id},)
+        divClassId: (className, id) => Object.assign(document.createElement('div'),{className:className, id:id}),
+        pClass: (className,text) => Object.assign(document.createElement('p'), {className:className, innerText:text})
             
     }
 }
@@ -69,13 +72,13 @@ let view = {
 
 let controller = {
     init: () => {
-        controller.create.drums();
+        controller.create.drums(samples);
         view.init();
 
     },
     create: {
-        drums: () => {
-            model.drums = samples.map((sample)=>({
+        drums: (input) => {
+            model.drums = input.map((sample)=>({
                 id : sample.name,
                 key : sample.key,
                 play : () => 
@@ -86,7 +89,12 @@ let controller = {
 
             }))
             }
+    },
+    delete:{
+        drums: () =>{
+            model.drums = null
         }
+    }
 }
 
 
